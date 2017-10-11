@@ -3,7 +3,7 @@ var fs = require('fs');
 var url = require('url');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0;
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
     
 // Create a server
 http.createServer( function (request, response) {  
