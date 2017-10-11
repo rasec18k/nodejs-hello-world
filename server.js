@@ -2,8 +2,9 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 
-var port = 8080;
-
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0;
+    
 // Create a server
 http.createServer( function (request, response) {  
    // Parse the request containing file name
