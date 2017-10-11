@@ -10,10 +10,10 @@ app.use(morgan('combined'))
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
-
+var rando = Math.floor(Math.random() * (100 - 1) + 1);
 
 app.get('/', function (req, res) {
-    res.render('index.html', { messageFromNode : 'hello from node' });
+    res.render('index.html', { messageFromNode : 'hello from node ' + rando });
 });
 
 // error handling
