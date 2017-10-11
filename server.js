@@ -13,7 +13,8 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 var rando = Math.floor(Math.random() * (100 - 1) + 1);
 
 app.get('/', function (req, res) {
-    res.render('index.html', { messageFromNode : 'hello from node ' + rando });
+    res.render('index.html', { messageFromNode : 'Hello from pod ID - ' + rando });
+    console.log('Calling index.html from pod ID - %s', rando);
 });
 
 // error handling
