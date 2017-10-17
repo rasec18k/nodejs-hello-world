@@ -11,12 +11,23 @@
 - server.js - Node.js server
 - views/index.html - Node.js/HTML view
 
+## Overview
+- TODO: graphic showing how code is deployed from github
+![img/GitHub-GitLab.png](img/GitHub-GitLab.png)
+
 ## Deploying an application to OpenShift
+### CLI Method
+### GUI Method
 
 ## Scaling the application up and down
+### CLI Method
+### GUI Method
 
 ## Deploying changes to code ito application
 ### Rolling update (default method)
-### Blue/Green Deployement
+#### CLI Method
+#### GUI Method
 
-### Setting up a pipeline with Jenkins
+### Blue/Green Deployement
+#### CLI Method
+#### GUI Method
