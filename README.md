@@ -62,7 +62,7 @@ app will build and deploy to OpenShift/MiniShift
         Build scheduled, use 'oc logs -f bc/nodejs-hello-world' to track its progress.
         Run 'oc status' to view your app.
 * From here, OpenShift will pull the code from github, build and deploy the application. 
-* You cancheck the build status of the newly deployed app by running the following command
+* You can check the build status of the newly deployed app by running the following command
 
         $ oc logs -f bc/nodejs-hello-world
       
