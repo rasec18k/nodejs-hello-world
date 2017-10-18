@@ -38,7 +38,6 @@ my-project is the default new project living in the minishift environment
         
 app will build and deploy to OpenShift/MiniShift
 
---> Found image f38fb14 (4 weeks old) in image stream "nodejs" in project "openshift" under tag "6" for "nodejs"
 
     Node.js 6 
     --------- 
