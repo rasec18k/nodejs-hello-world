@@ -98,6 +98,64 @@ app will build and deploy to OpenShift/MiniShift
 
 ### GUI Method
 
+After starting up Mini/OpenShift, point your web browser to the IP address shown at startup
+
+*Example:*
+
+    The server is accessible via web console at:
+        https://192.168.99.100:8443
+
+Login using the developer/developer credentials.
+![](img/openshift_login.png)
+
+
+From here, click on the default project "My Project", or create a new project and open it.
+![](img/openshift_projects_default.png)
+
+
+Now click "Add to Project" to add a containerized application to the project.
+![](img/openshift_add_app.png)
+
+
+You are deploying a Node.js application, which is written in JavaScript, so select that as the language.
+![](img/openshift_cat.png)
+
+
+This is a stateless Node.js app not using a database, so select "Node.js" and version "4", then click the "Select" button.
+![](img/openshift_node.png)
+
+Enter the name of your application.  You are free to choose any name. "node-js-hello-world" was chosen for consistancy with this git repository.
+
+Enter this git repository's URL:
+
+    https://github.com/bugbiteme/nodejs-hello-world.git
+    
+Now click "Create"
+![](img/openshift_create.png)
+
+*Note: "advanced options" is out of the scope of this turorial. The defaults are fine at this point, but feel free to poke around and look at the options avialable here. Some items can be modified after deployment*
+
+
+Once you click "Create" OpenShift will pull the code fom github, build and deploy a single instance of the nodejs-hello-world application.
+
+Click "Continue to overview" to see the status of the deployed application.
+![](img/openshift_created.png)
+
+
+The below shows a high level view of the application pod. In this example the pod is one contaider running node-js-hello-world container. If an application is made up of mulitple deployed containers, you will see them all in the pod here.
+![](img/openshift_deployed_short.png)
+
+
+Expand the "node-js-hello-world" container to see more information about the deployment.
+
+One thing to take note of is the "ROUTES section uner "Networking". The URL listed is the URL of this application service, which happens to be the entry point to our application. Go ahead and click on the URL to see the application via the web browser.
+![](img/openshift_deployed_long.png)
+
+*Application Screenshot*
+![Screenshot of web based application](img/web-app-screenshot.png)
+
+*Note: More information on pods in the next section.*
+ 
 ## Scaling the application up and down
 ### CLI Method
 ### GUI Method
