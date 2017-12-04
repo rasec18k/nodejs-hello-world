@@ -157,8 +157,25 @@ One thing to take note of is the "ROUTES section uner "Networking". The URL list
 *Note: More information on pods in the next section.*
  
 ## Scaling the application up and down
+
+Reasons to use scaling in your application:
+
+* Non-disruptive deployments
+* Meet the demands of end users
+
+
 ### CLI Method
 ### GUI Method
+Scaling containers that make up an application deployment from one to many instances is very straight forward from the OpenShift GUI management console.
+
+* from the Overview tab, expand the *node-js-hello-world* deployment
+![](img/openshift_deployed_long.png)
+* You can see the container: NODE-JS-HELLO-WORLD is currently scaled to one pod. In order to scale it to more instances, simply click the up arrow next to the blue circle to scale the application to more instances/pods.
+![](img/openshift-2-pods.png)
+* scroll down further to get more information about the pods running for the deployment
+![](img/openshift_2_pods_detail.png)
+* You can experiment and scale the number of pods up and down. Note that you can open the deployed application in different browser tabs, and where you see the text *Hello from pod ID - X*, X will be the same in all tabs if only one pod is running, but will change in the different tabs based on the number of pods running.
+
 
 ## Deploying changes to code ito application
 ### Rolling update (default method)
