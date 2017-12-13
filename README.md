@@ -167,7 +167,7 @@ Reasons to use scaling in your application:
 ### CLI Method
 Scaling containers that make up an application deployment from one to many instances is easy from OpenShift CLI management console.
 
-To see how many instances of the deployed application are running, run the following command from the CLI:
+Check status on the number of application instances currently running, run the following command from the CLI:
 
     $ oc get dc nodejs-hello-world
     NAME                 REVISION   DESIRED   CURRENT   TRIGGERED BY
@@ -185,7 +185,11 @@ Now run the status command to verify the number of replicas have increased to th
     NAME                 REVISION   DESIRED   CURRENT   TRIGGERED BY
     nnodejs-hello-world   1          3         3         config,image(nodejs-hello-world:latest)
     
-From the web GUI you can also see the number of pods (aka "instances" or "replicas") has changed from 1 to 3.
+From the web GUI you can also see the number of pods (aka "instnances" or "replicas") has changed from 1 to 3.
+
+Use the same command when you want to scale down bu setting the `--replicas` flag to the desired number of instances.
+
+*Note: Although we are doing this manually in the tutorial, this process can be automated to scale as demand fluctuates*
 
 ### GUI Method
 Scaling containers that make up an application deployment from one to many instances is very straight forward from the OpenShift GUI management console.
@@ -201,6 +205,76 @@ Scaling containers that make up an application deployment from one to many insta
 
 ## Deploying changes to code ito application
 ### Rolling update (default method)
+
+### Prereqs - Deploy a forked version of the example project
+
+For this section, you will want to fork the existing *nodejs-hello-world* project in git up to your own account. You will also change some code and deploy the changes to the application.
+
+#### Delete Existing Deployement
+
+* Before we do anything, delete the application we have been using as an example
+
+* Navigate to the application in the OpenShift console
+![](img/openshift_clean1.png)
+
+* Click on the nodejs-hello-world deployment
+![](img/openshift_clean2.png)
+
+* Select *Delete* from the drop down menu under *Action* in the upper right corner
+![](img/openshift_clean3.png)
+
+* Confirm that you want to delete *nodejs-hello-world* (it's OK)
+
+* Navigate to the old image in OpenShift (Builds->Images)
+![](img/openshift_clean4.png)
+
+* Click on *nodejs-hello-world*
+
+* From the *Action* drop down menue, select the *Delete* action
+
+* Perform the same action under Builds->Builds (delete it)
+
+* Perform the same action under Applications->Serivices (and Routes) (delete it)
+
+* Now we are ready to deploy the forked project!!! 
+
+
+
+#### Clone Project
+
+* Go to the github project [https://github.com/bugbiteme/nodejs-hello-world
+]() (the one you are reading right now)
+
+* Click the *Fork* button on the upper right hand of the webpage
+
+* This will fork the repository to your own github account (Example: **http://github.com.YOUR_ACCOUNT.nodejs-hello-world**). This will allow you to make and check in code changes.
+
+* Clone the project to your local system:
+
+`$ git clone http://github.com.YOUR_ACCOUNT.nodejs-hello-world.git`
+
+* This will create a folder on your workstation called *nodejs-hello-world*
+
+* Navigate to the directory *nodejs-hello-world*
+ 
+`$ cd nodejs-hello-world`
+
+* Navigate to the *views* directory. This is where part of the code lives. We will come back to this later.
+ 
+`$ cd views`
+
+#### Deploy and scale up forked project
+* deploy the forked project (using the CLI method or GUI methods discussed above).
+
+* Scale the deployed application to 8 pods
+
+![](img/openshift_scale_8.png)
+
+
+
+
+
+
 #### CLI Method
 #### GUI Method
 
