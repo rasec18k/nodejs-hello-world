@@ -179,13 +179,13 @@ After the initial deployment of our application, lets scale the number of instan
 
 *Note: dc = deploymentConfig*
 
-Now run the status command to verify the number of replicas have increased to the requested number:
+Now run the status command to verify the number of replicas have increased to the desired number:
 
     $ oc get dc nodejs-hello-world
     NAME                 REVISION   DESIRED   CURRENT   TRIGGERED BY
     nnodejs-hello-world   1          3         3         config,image(nodejs-hello-world:latest)
     
-From the web GUI you can also see the number of pods (aka "instnances" or "replicas") has changed from 1 to 3.
+From the web GUI you can also see the number of pods (aka "instances" or "replicas") has changed from 1 to 3.
 
 ### GUI Method
 Scaling containers that make up an application deployment from one to many instances is very straight forward from the OpenShift GUI management console.
