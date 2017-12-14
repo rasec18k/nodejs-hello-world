@@ -204,7 +204,6 @@ Scaling containers that make up an application deployment from one to many insta
 
 
 ## Deploying changes to code ito application
-### Rolling update (default method)
 
 ### Prereqs - Deploy a forked version of the example project
 
@@ -270,6 +269,9 @@ For this section, you will want to fork the existing *nodejs-hello-world* projec
 
 ![](img/openshift_scale_8.png)
 
+### Rolling update (default method)
+
+A rolling deployment slowly replaces instances of the previous version of an application with instances of the new version of the application. A rolling deployment typically waits for new pods to become ready via a readiness check before scaling down the old components. If a significant issue occurs, the rolling deployment can be aborted.
 
 
 
