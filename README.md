@@ -337,15 +337,82 @@ Now save the file and push the changes to github:
         $ pwd
         /Users/user/projects/nodejs-hello-world
 
-* Push the code to github using the following commands:
+* Push the code to github using the following three commands:
 
-                
+        $ git add *
+        
+        $ git commit -m "changes to index.html"
+        
+        [master 8e47799] changes to index.html
+         2 files changed, 67 insertions(+), 1 deletion(-)
+         create mode 100644 img/openshift_deploy_before.png
+        
+        $ git push
+        
+        Counting objects: 5, done.
+        Delta compression using up to 8 threads.
+        Compressing objects: 100% (5/5), done.
+        Writing objects: 100% (5/5), 33.91 KiB | 0 bytes/s, done.
+        Total 5 (delta 2), reused 0 (delta 0)
+        remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+        To https://github.com/YOUR_ACCOUNT/nodejs-hello-world.git
+           2ba8d7d..8e47799  master -> master        
 
-
+Now that your code changes are checked in, it's time to deploy them to your OpenShift environment!
 
 #### CLI Method
+
+From the CLI, type in the following command to build and deploy the code changes we just made:
+
+    $ oc start-build myapp
+    
+To see logging in real time, append the `--follow` flag:
+
+    $ oc start-build myapp --follow
+    
+*Example*
+
+    $ oc start-build myapp --follow
+    build "myapp-9" started
+    Cloning "https://github.com/team-bugbiteme/nodejs-hello-world.git" ...
+	    Commit:	12ef08da162c3659e9384449a81c84565a9b8ddd (changes to index.html)
+	    Author:	Leon Levy <leon.s.levy@gmail.com>
+	    Date:	Mon Dec 18 14:16:31 2017 -0800
+    ---> Installing application source ...
+    ---> Building your Node application from source
+    ...
+    Push successful
+
+From the log you can see all the automated build and deployment operations, such as:
+
+
+* Cloning updated code from version control (github)
+* Checking dependancies
+* Compiling the new code
+* Pushing the application to "production"
+
 #### GUI Method
 
+From the *Overview* page, select *Start Build" from the drop down menu on the upper right corner. 
+![](img/openshift_start_build_gui.png)
+
+This will pull the latest code from github (the one we just checked in) build and deploy it as a rolling update.
+
+As in the screenshot below, you should be able to see the existing deployment scaling down on the left, while the new build scales up on the right.
+
+![](img/openshift_rolling_gui.png)
+
+Click *View Full Log* to see all the automated the steps performed for the rebuild and deploy operation.
+
+These steps include:
+
+* Cloning updated code from version control (github)
+* Checking dependancies
+* Compiling the new code
+* Pushing the application to "production"
+
+Check to see if your code changes are visible in the application by refreshing the application URL.
+![](img/openshift_deploy_after.png)
 ### Blue/Green Deployement
 #### CLI Method
 #### GUI Method
