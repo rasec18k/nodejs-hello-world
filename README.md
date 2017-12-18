@@ -203,7 +203,7 @@ Scaling containers that make up an application deployment from one to many insta
 * You can experiment and scale the number of pods up and down. Note that you can open the deployed application in different browser tabs, and where you see the text *Hello from pod ID - X*, X will be the same in all tabs if only one pod is running, but will change in the different tabs based on the number of pods running.
 
 
-## Deploying changes to code ito application
+## Deploying changes to code to application
 
 ### Prereqs - Deploy a forked version of the example project
 
@@ -273,7 +273,73 @@ For this section, you will want to fork the existing *nodejs-hello-world* projec
 
 A rolling deployment slowly replaces instances of the previous version of an application with instances of the new version of the application. A rolling deployment typically waits for new pods to become ready via a readiness check before scaling down the old components. If a significant issue occurs, the rolling deployment can be aborted.
 
+#####When to Use a Rolling Deployment
 
+* When you want to take no downtime during an application update.
+
+* When your application supports having old code and new code running at the same time.
+
+A rolling deployment means you to have both old and new versions of your code running at the same time. This typically requires that your application handle N-1 compatibility, that data stored by the new version can be read and handled (or gracefully ignored) by the old version of the code. This can take many forms — data stored on disk, in a database, in a temporary cache, or that is part of a user’s browser session. While most web applications can support rolling deployments, it is important to test and design your application to handle it.
+
+### Make some code changes
+
+Now verify that your web application is up and running by going to the routed URL
+
+![](img/openshift_deploy_before.png)
+
+Using your favorite text editor (TexWrangler, Notepad++, vi, etc...), open the file: 
+
+* *nodejs-hello-world/views/index.html*
+
+and make some edits.
+
+*example before code change:*
+
+	
+	<style>
+	h2 {
+    	font-family: Arial, Helvetica, sans-serif;
+	}
+
+	p {
+    	font-family: Arial, Helvetica, sans-serif;
+	}
+	</style>
+		
+		<title>Nodejs Hello World Example for OpenShift!</title>
+	</head>	       
+	<body>
+		<h2>Hello World!!!</h2>
+                <p><b>Message passed from nodejs server:</b>
+                <% if (messageFromNode) { %>
+                   <span class="code" id="count-value"><%=messageFromNode%></span>
+                   </p>
+                <% } else { %>
+                   <span class="code" id="count-value">No value found</span>
+                   </p>
+                <%} %>
+
+	</body>
+
+Change the line:
+
+`<h2>Hello World!!!</h2>`
+
+to something else: 
+
+*example:* `<h2>Hello Code Change!!!</h2>`
+
+Now save the file and push the changes to github:
+
+* From the command line, make sure you are in the repository root directory:
+
+    
+        $ pwd
+        /Users/user/projects/nodejs-hello-world
+
+* Push the code to github using the following commands:
+
+                
 
 
 
