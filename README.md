@@ -2,10 +2,17 @@
 
 **A simple and stateless "Hello World" Application written in Node.js used to illustrate OpenShift functionality**
 
+In this lesson, we will ocver the following topics:
+
+* Creating and deploying a new application in OpenShift (via CLI and GUI)
+*  Scaling the application up and down (via CLI and GUI)
+*  Deploying changes to code to production using the rolling update method (via CLI and GUI)
+
 ## Prerequisites
 - MiniShift environment is up and running
 - See [Lesson 1 - Install and run Minishift](https://github.com/bugbiteme/openshift_tutorials) for instructions on how to install and run MiniShift 
-
+- Ability to edit files (you will be making some code changes)
+- 
 ## Relevent files we will be looking at
 
 - server.js - Node.js server
@@ -413,6 +420,5 @@ These steps include:
 
 Check to see if your code changes are visible in the application by refreshing the application URL.
 ![](img/openshift_deploy_after.png)
-### Blue/Green Deployement
-#### CLI Method
-#### GUI Method
+
+For more information on other types of deployments, see: [Advanced Deployment Strategies](https://docs.openshift.com/container-platform/3.3/dev_guide/deployments/advanced_deployment_strategies.html) 
