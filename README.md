@@ -240,7 +240,7 @@ For this section, you will want to fork the existing *nodejs-hello-world* projec
 
 * Perform the same action under Builds->Builds (delete it)
 
-* Perform the same action under Applications->Serivices (and Routes) (delete it)
+* Perform the same action under Applications->Services (and Routes) (delete it)
 
 * Now we are ready to deploy the forked project!!! 
 
